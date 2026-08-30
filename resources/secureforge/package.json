@@ -1,0 +1,19 @@
+{
+  "name": "secureforge-agent-package",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Installable GitHub Copilot security assessment and remediation agent",
+  "bin": {
+    "secureforge-install": "./installer/install.mjs",
+    "secureforge-validate": "./installer/validate.mjs"
+  },
+  "scripts": {
+    "validate": "node installer/validate.mjs",
+    "install:dry-run": "node installer/install.mjs --target .. --dry-run"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}

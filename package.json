@@ -1,0 +1,88 @@
+{
+  "name": "secureforge-vscode",
+  "displayName": "SecureForge",
+  "description": "Install and manage the SecureForge GitHub Copilot security agent in a repository.",
+  "version": "0.1.0",
+  "publisher": "secureforge",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "categories": [
+    "Other",
+    "Machine Learning"
+  ],
+  "keywords": [
+    "security",
+    "copilot",
+    "agent",
+    "codeql",
+    "dependabot"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": "limited",
+      "description": "Preview and prerequisite checks are available in Restricted Mode. Installing, updating, and uninstalling repository files requires Workspace Trust."
+    },
+    "virtualWorkspaces": false
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "secureforge.openSetup",
+        "title": "SecureForge: Open Setup"
+      },
+      {
+        "command": "secureforge.install",
+        "title": "SecureForge: Install"
+      },
+      {
+        "command": "secureforge.preview",
+        "title": "SecureForge: Preview Installation"
+      },
+      {
+        "command": "secureforge.checkPrerequisites",
+        "title": "SecureForge: Check Prerequisites"
+      },
+      {
+        "command": "secureforge.preparePrerequisites",
+        "title": "SecureForge: Prepare Missing Prerequisites"
+      },
+      {
+        "command": "secureforge.validate",
+        "title": "SecureForge: Validate Installation"
+      },
+      {
+        "command": "secureforge.update",
+        "title": "SecureForge: Update"
+      },
+      {
+        "command": "secureforge.uninstall",
+        "title": "SecureForge: Uninstall"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "secureforge.openSetup"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "check": "npm run compile && node --test dist/test/**/*.test.js",
+    "package": "npm run compile && vsce package",
+    "vscode:prepublish": "npm run compile",
+    "validate:resources": "node scripts/validate-resources.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/vscode": "^1.96.0",
+    "@vscode/vsce": "^3.6.2",
+    "typescript": "^5.9.0"
+  }
+}
